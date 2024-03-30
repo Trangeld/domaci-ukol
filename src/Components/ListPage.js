@@ -1,15 +1,3 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import "./App.css";
-import logo from "./logo.svg";
-
-const Home = () => (
-  <div className="content">
-    <h2>Home Page</h2>
-    {/* Add your home page content here */}
-  </div>
-);
-
 const List = () => {
   const [items, setItems] = useState([]);
 
@@ -48,23 +36,3 @@ const List = () => {
     </div>
   );
 };
-
-function App() {
-  return (
-    <Router>
-      <div className="app-container">
-        <header className="header">
-          <img src={logo} className="logo" alt="logo" />
-        </header>
-        <div className="content">
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/list" element={<List />} />
-          </Routes>
-        </div>
-      </div>
-    </Router>
-  );
-}
-
-export default App;
