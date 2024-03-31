@@ -16,6 +16,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   flex: 1;
 }
@@ -24,8 +25,8 @@
   display: flex;
   flex-direction: column;
   background-color: #555;
-  padding: 20px;
-  max-width: 200px;
+  padding: 40px;
+  max-width: 200px; /* Previous width */
 }
 
 .sidebar nav ul {
@@ -44,19 +45,48 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 20px;
-  align-self: flex-start;
+  position: absolute;
+  top: 20px; /* Position the button at the top */
+  right: 20px; /* Position the button at the right */
 }
 
 .item-list {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: 50px; /* Add margin-top to create space for the button */
+  flex-grow: 1; /* Make the item-list fill the remaining vertical space */
 }
 
 .item {
+  display: flex;
+  align-items: center;
   padding: 10px;
   background-color: #f0f0f0;
   border-radius: 5px;
+  margin-right: 20px;
   margin-bottom: 10px;
+}
+
+.item-controls {
+  margin-left: auto; /* Push item controls to the right */
+}
+
+.select {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.item-controls input {
+  width: 50px;
+  padding: 5px;
+}
+
+.item-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
