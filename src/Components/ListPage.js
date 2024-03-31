@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import ListInfo from "./EditListForm";
+import Form from "./Form"; // Import Form component
 import "../App.css";
 
 const ListPage = () => {
@@ -11,6 +12,7 @@ const ListPage = () => {
   const [filter, setFilter] = useState(""); // State for filter value
   const [listName, setListName] = useState("Your List Name");
   const [isEditListFormOpen, setIsEditListFormOpen] = useState(false); // State to manage the visibility of the edit list form
+  const [isFormOpen, setIsFormOpen] = useState(false); // State to manage the visibility of the form
 
   const addItem = () => {
     const newItemName = `Item ${items.length + 1}`;
@@ -44,13 +46,22 @@ const ListPage = () => {
     setFilter(e.target.value); // Update filter value when select changes
   };
 
-  const handleEditName = (newName) => {
-    console.log("New list name:", newName);
-    setListName(newName);
-  };
-
   const handleEditListFormToggle = () => {
     setIsEditListFormOpen(!isEditListFormOpen); // Toggle the visibility of the edit list form
+  };
+
+  const handleFormToggle = () => {
+    setIsFormOpen(!isFormOpen); // Toggle the visibility of the form
+  };
+
+  const handleDelete = (index) => {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1); // Remove the item at the specified index
+    setItems(updatedItems);
+  };
+
+  const handleListNameChange = (name) => {
+    setListName(name); // Update the list name
   };
 
   return (
@@ -71,6 +82,13 @@ const ListPage = () => {
         </nav>
       </div>
       <header className="toolbar">
+        <ListInfo
+          name={listName}
+          handleEditListFormToggle={handleEditListFormToggle}
+          isEditListFormOpen={isEditListFormOpen}
+          handleListNameChange={handleListNameChange} // Pass the function to update the list name
+        />
+        <span className="filter-identifyer">Filter</span>
         <select className="filter" onChange={handleFilterChange}>
           <option value="">All</option>
           <option value="option1">Active</option>
@@ -81,51 +99,54 @@ const ListPage = () => {
           New
         </button>
       </header>
-      <div className="item-list">
-        <ListInfo
-          name={listName}
-          handleEditName={handleEditName}
-          isEditListFormOpen={isEditListFormOpen}
-          handleEditListFormToggle={handleEditListFormToggle}
-        />
-        {items
-          .filter((item) => (filter ? item.option === filter : true))
-          .map((item, index) => (
-            <div className="item" key={index}>
-              {editingIndex === index ? (
-                <>
+      {isFormOpen ? (
+        <Form onClose={handleFormToggle} />
+      ) : (
+        <div className="item-list">
+          {items
+            .filter((item) => (filter ? item.option === filter : true))
+            .map((item, index) => (
+              <div
+                className={`item ${item.option === "option2" ? "done" : ""} ${
+                  item.option === "option3" ? "rejected" : ""
+                } ${item.option === "option1" ? "active" : ""}`}
+                key={index}
+              >
+                {editingIndex === index ? (
+                  <>
+                    <input
+                      type="text"
+                      value={newName}
+                      onChange={(e) => setNewName(e.target.value)}
+                    />
+                    <button onClick={() => handleRename(index)}>Save</button>
+                  </>
+                ) : (
+                  <>
+                    <span>{item.name}</span>
+                    <FaEdit onClick={() => handleEditClick(index)} />
+                  </>
+                )}
+                <div className="item-controls">
+                  <select
+                    className="select"
+                    value={item.option}
+                    onChange={(e) => handleOptionChange(index, e.target.value)}
+                  >
+                    <option value="option1">Active</option>
+                    <option value="option2">Done</option>
+                    <option value="option3">Rejected</option>
+                  </select>
                   <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
+                    type="number"
+                    onChange={(e) => handleNumberChange(index, e.target.value)}
                   />
-                  <button onClick={() => handleRename(index)}>Save</button>
-                </>
-              ) : (
-                <>
-                  <span>{item.name}</span>
-                  <FaEdit onClick={() => handleEditClick(index)} />
-                </>
-              )}
-              <div className="item-controls">
-                <select
-                  className="select"
-                  value={item.option} // Set the value attribute to control the select
-                  onChange={(e) => handleOptionChange(index, e.target.value)}
-                >
-                  <option value="option1">Active</option>
-                  <option value="option2">Done</option>
-                  <option value="option3">Rejected</option>
-                </select>
-                <input
-                  type="number"
-                  onChange={(e) => handleNumberChange(index, e.target.value)}
-                />
-                <button>Remove</button>
+                  <button onClick={() => handleDelete(index)}>Remove</button>
+                </div>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

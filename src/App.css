@@ -29,6 +29,18 @@
   background-color: #555;
   padding: 40px;
   max-width: 200px;
+  margin-right: 40px;
+}
+
+.sidebar a {
+  color: white; /* Change link color to white */
+  font-size: 18px; /* Increase font size */
+  margin-left: 10px; /* Add margin from left to move links a little to the left */
+  text-decoration: none; /* Remove underline */
+}
+
+.sidebar a:hover {
+  text-decoration: underline; /* Add underline on hover */
 }
 
 .item-list {
@@ -36,6 +48,29 @@
   padding: 20px;
   margin-top: 60px; /* Increase the top margin to create space for the new button and filter */
   position: relative; /* Set position relative for absolute positioning */
+}
+
+.list-info {
+  position: absolute;
+  top: 0; /* Position relative to the top of the content */
+  left: 200px; /* Position relative to the right of the content */
+  margin-top: 20px; /* Add margin from top */
+  margin-right: 20px; /* Add margin from right */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2; /* Set z-index to bring it above the filter */
+}
+
+.List-identifier {
+  padding-right: 10px;
+}
+
+.List-name {
+  padding-right: 10px;
 }
 
 .new-button {
@@ -68,7 +103,21 @@
   z-index: 2; /* Set z-index to bring it above the item-list content */
 }
 
-.item {
+.filter-identifyer {
+  position: absolute;
+  top: 0; /* Position relative to the top of the content */
+  right: 250px; /* Position relative to the right of the content */
+  margin-top: 20px; /* Add margin from top */
+  margin-right: 20px; /* Add margin from right */
+  color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2; /* Set z-index to bring it above the item-list content */
+}
+
+/*.item {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -76,6 +125,29 @@
   border-radius: 5px;
   margin-right: 20px;
   margin-bottom: 10px;
+}*/
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.item.done span {
+  opacity: 0.4; /* Reduce opacity for items with option2 (Done) */
+  padding-right: 10px;
+}
+
+.item.rejected span {
+  text-decoration: line-through; /* Add line-through for items with option3 (Rejected) */
+  padding-right: 10px;
+}
+
+.item.active span {
+  padding-right: 10px;
 }
 
 .item-controls {
