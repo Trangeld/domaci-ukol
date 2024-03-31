@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./App.css";
 import logo from "./logo.svg";
 import ListPage from "./Components/ListPage"; // Assuming ListPage component is in the Components folder
+import ListsPage from "./Components/ListsPage";
 
 const Home = () => (
   <div className="content">
@@ -14,6 +15,9 @@ const Home = () => (
           </li>
           <li>
             <Link to="/list">List</Link>
+          </li>
+          <li>
+            <Link to="/lists">List</Link>
           </li>
         </ul>
       </nav>
@@ -29,13 +33,14 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <header className="header">
+        <header className="logo-box">
           <img src={logo} className="logo" alt="logo" />
         </header>
         <div className="content">
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/list" element={<ListPage />} />{" "}
+            <Route path="/lists" element={<ListsPage />} />{" "}
             {/* Use ListPage component */}
           </Routes>
         </div>

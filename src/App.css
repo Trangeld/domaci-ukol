@@ -1,12 +1,14 @@
 .app-container {
   display: flex;
-  height: 100vh;
   flex-direction: column;
+  height: 100vh;
+  position: relative; /* Set position relative for absolute positioning */
 }
 
-.header {
+.logo-box {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between; /* Ensure proper alignment */
+  align-items: center;
   background-color: #333;
   padding: 20px;
 }
@@ -16,9 +18,9 @@
 }
 
 .content {
-  position: relative;
   display: flex;
   flex: 1;
+  position: relative; /* Set position relative for absolute positioning */
 }
 
 .sidebar {
@@ -26,36 +28,44 @@
   flex-direction: column;
   background-color: #555;
   padding: 40px;
-  max-width: 200px; /* Previous width */
+  max-width: 200px;
 }
 
-.sidebar nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin-bottom: 10px;
+.item-list {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px; /* Increase the top margin to create space for the new button and filter */
+  position: relative; /* Set position relative for absolute positioning */
 }
 
 .new-button {
+  position: absolute;
+  top: 0; /* Position relative to the top of the content */
+  right: 0; /* Position relative to the right of the content */
+  margin-top: 20px; /* Add margin from top */
+  margin-right: 20px; /* Add margin from right */
   background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  position: absolute;
-  top: 20px; /* Position the button at the top */
-  right: 20px; /* Position the button at the right */
+  z-index: 2; /* Set z-index to bring it above the filter */
 }
 
-.item-list {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin-top: 50px; /* Add margin-top to create space for the button */
-  flex-grow: 1; /* Make the item-list fill the remaining vertical space */
+.filter {
+  position: absolute;
+  top: 0; /* Position relative to the top of the content */
+  right: 120px; /* Position relative to the right of the content */
+  margin-top: 20px; /* Add margin from top */
+  margin-right: 20px; /* Add margin from right */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2; /* Set z-index to bring it above the item-list content */
 }
 
 .item {
@@ -69,7 +79,7 @@
 }
 
 .item-controls {
-  margin-left: auto; /* Push item controls to the right */
+  margin-left: auto;
 }
 
 .select {
