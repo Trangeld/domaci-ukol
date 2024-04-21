@@ -43,12 +43,12 @@
   text-decoration: underline; /* Add underline on hover */
 }
 
-.item-list {
+/*.item-list {
   flex: 1;
   padding: 20px;
-  margin-top: 60px; /* Increase the top margin to create space for the new button and filter */
-  position: relative; /* Set position relative for absolute positioning */
-}
+  margin-top: 60px; /* Increase the top margin to create space for the new button and filter /
+  position: relative; /* Set position relative for absolute positioning /
+}*/
 
 .list-info {
   position: absolute;
@@ -121,54 +121,88 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #f0f0f0;
   border-radius: 5px;
   margin-right: 20px;
   margin-bottom: 10px;
 }*/
 
-.item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
-  margin-right: 20px;
-  margin-bottom: 10px;
-}
-
-.item.done span {
-  opacity: 0.4; /* Reduce opacity for items with option2 (Done) */
+/*.item.done span {
+  opacity: 0.4; /* Reduce opacity for items with option2 (Done) /
   padding-right: 10px;
-}
+}*/
 
-.item.rejected span {
-  text-decoration: line-through; /* Add line-through for items with option3 (Rejected) */
+/*.item.rejected span {
+  text-decoration: line-through; /* Add line-through for items with option3 (Rejected) /
   padding-right: 10px;
-}
+}*/
 
-.item.active span {
+/*.item.active span {
   padding-right: 10px;
-}
+}*/
 
-.item-controls {
+/*.item-controls {
   margin-left: auto;
-}
+}*/
 
 .select {
   padding: 5px;
   margin-right: 10px;
 }
 
-.item-controls input {
+/*.item-controls input {
   width: 50px;
   padding: 5px;
-}
+}*/
 
-.item-controls button {
+/*.item-controls button {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}*/
+
+.item-list {
+  flex: 1;
+  padding: 20px;
+  margin-top: 60px;
+  position: relative;
+  display: flex; /* Change to flex layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: flex-start; /* Align items from the start */
+}
+
+.item {
+  display: flex;
+  flex-direction: column; /* Arrange item content vertically */
+  align-items: center; /* Center align item content */
+  padding: 20px; /* Adjust padding for tiles */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  margin-right: 20px;
+  margin-bottom: 20px; /* Add bottom margin for spacing between tiles */
+  background-color: #f0f0f0; /* Add background color for tiles */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  min-width: 200px; /* Set minimum width for tiles */
+}
+
+/* Add specific styling for different item options */
+.item.done {
+  background-color: #b3ffb3; /* Light green for done items */
+}
+
+.item.rejected {
+  background-color: #ff9999; /* Light red for rejected items */
+}
+
+.item.active {
+  background-color: #99ccff; /* Light blue for active items */
+}
+
+.item span {
+  padding: 10px; /* Adjust padding for content inside tiles */
+}
+
+.item-controls {
+  margin-top: 10px; /* Add top margin for item controls */
 }

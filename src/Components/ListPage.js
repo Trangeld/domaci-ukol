@@ -76,7 +76,10 @@ const ListPage = () => {
               <Link to="/list">List</Link>
             </li>
             <li>
-              <Link to="/lists">List</Link>
+              <Link to="/lists">Lists</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
             </li>
           </ul>
         </nav>

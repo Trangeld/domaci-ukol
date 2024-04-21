@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./App.css";
 import logo from "./logo.svg";
 import ListPage from "./Components/ListPage"; // Assuming ListPage component is in the Components folder
 import ListsPage from "./Components/ListsPage";
+import UsersPage from "./Components/UsersPage";
+import NewPage from "./Components/NewPage";
 
 const Home = () => (
   <div className="content">
@@ -17,7 +19,13 @@ const Home = () => (
             <Link to="/list">List</Link>
           </li>
           <li>
-            <Link to="/lists">List</Link>
+            <Link to="/lists">Lists</Link>
+          </li>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
+          <li>
+            <Link to="/test">Test</Link>
           </li>
         </ul>
       </nav>
@@ -41,6 +49,8 @@ function App() {
             <Route path="/" exact element={<Home />} />
             <Route path="/list" element={<ListPage />} />{" "}
             <Route path="/lists" element={<ListsPage />} />{" "}
+            <Route path="/users" element={<UsersPage />} />{" "}
+            <Route path="/test" element={<NewPage />} />{" "}
             {/* Use ListPage component */}
           </Routes>
         </div>
