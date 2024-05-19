@@ -1,0 +1,29 @@
+{
+  "name": "myserver",
+  "version": "0.0.1",
+  "description": "backend pro domaci ukol na uubackend",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trangeld/domaci-ukol.git"
+  },
+  "keywords": [
+    "fullstack",
+    "homework",
+    "shoppinglist"
+  ],
+  "author": "the big me",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Trangeld/domaci-ukol/issues"
+  },
+  "homepage": "https://github.com/Trangeld/domaci-ukol#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
+  }
+}
